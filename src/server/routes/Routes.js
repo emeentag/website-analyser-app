@@ -1,6 +1,9 @@
 import Path from 'path';
 import HBS from 'express-handlebars';
 
+import HomeController from '../controllers/HomeController';
+import AnalyserController from '../controllers/AnalyserController';
+
 export default class Routes {
 
   constructor(express, app, commonMiddleware) {
@@ -31,10 +34,11 @@ export default class Routes {
   createURLRoutes() {
     // ::::GETs::::
     // Home
-    this.app.get('/', (req, res, next) => {
-      res.status(200).render('index', {
-        title: "Welcome to Website Alayser"
-      });
-    })
+    this.app.get('/', HomeController.getHome);
+    
+    // ::::POSTs::::
+    this.app.post('/analyse', AnalyserController.analyseWebPage);
+    // ::::PUTs::::
+    // ::::DELETEs::::
   }
 }
