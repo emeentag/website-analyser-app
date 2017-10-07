@@ -8,6 +8,7 @@ import axios from 'axios';
 
 import { doSearch } from '../actions/AnalyseActions';
 import AnalyseDetails from '../components/AnalyseDetails/AnalyseDetails';
+import Button from '../components/Button/Button';
 
 @withRouter
 @connect((props) => {
@@ -29,7 +30,7 @@ export default class Home extends React.Component {
       return true;
     }
 
-    return false;
+    return true;
   }
 
 
@@ -74,8 +75,9 @@ export default class Home extends React.Component {
                       required autoFocus ref={(element) => { this.searchInput = element }}
                       placeholder="Type website domain here."
                     />
+                    
                     <div class="btn-analyse">
-                      <button type='submit' class='btn btn-primary'>Analyse</button>
+                      <Button type='primary' name='Analyse' loading={this.props.isAnalysing} />
                     </div>
                   </div>
                 </div>
