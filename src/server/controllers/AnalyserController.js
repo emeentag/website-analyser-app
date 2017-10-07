@@ -3,7 +3,8 @@ import async from 'async';
 import Cheerio from 'cheerio';
 
 import ServerConfig from '../config/ServerConfig';
-import WebpageAnalyser from '../utils/WebpageAnalyser';
+import WebPageAnalyser from '../utils/WebPageAnalyser';
+import WebPageInfo from '../models/WebPageInfo.json';
 
 export default class AnalyserController {
 
@@ -49,13 +50,19 @@ export default class AnalyserController {
    * 
    * @param {*Array} results 
    */
-  static analyzeBody(results, response) {
-    var html = results[0].body;
-    var websiteInfo = {};
+  static analyzeBody(results, serverResponse) {
+    var response = results[0];
+    var html = response.body;
+    var cheerio = Cheerio.load(html);
 
-    websiteInfo.version = WebpageAnalyser.getHTMLVersion(html);
+    WebPageInfo.version = WebPageAnalyser.getHTMLVersion(html);
+    WebPageInfo.title = WebPageAnalyser.getTitle(html, cheerio);
+    WebPageInfo.headings = WebPageAnalyser.getHeadings(html, cheerio, WebPageInfo.headings);
+    WebPageInfo.loginForm = WebPageAnalyser.isLoginFormExist(html, cheerio);
 
-    //console.log(results);
-    response.status(200).send(websiteInfo);
+    // Check for the accessible links and return server response.
+    // This function contains async functions so this is the reason why we are
+    // passing server response as a parameter here. We should response all async functions are done.
+    WebPageAnalyser.getLinks(html, cheerio, WebPageInfo, response, serverResponse);
   }
 }
