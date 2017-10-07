@@ -1,26 +1,74 @@
-# Building a simple Web-Application for Analyzing Web-Sites
-The objective is to build a web-application that does some analysis of a web-page/URL.
+# Website Analyser Code Challenge for Scout24
 
-The application should show a form with a text-field thus the user can type in the URL of the webpage being analyzed. Additionally to form should contain a button for sending the input to the server as well as to trigger the server-side analysis process.
+This is an application for analysing the provided webpage according to criterias below:
+1. Show HTML version of the page.
+2. Show title of the page.
+3. Check if there is a login form in the page or not.
+4. Check for the headings and their counts in the page.
+5. Find all the links including internals and the externals with their accessibilitie. Show how many they are and list them in a table.
 
-After processing the results should be shown to the user in terms of a simple table below to the form. The result comprises the following information:
+## Technology used:
+* ES6
+* Node.js
+* Express.js
+* React.js
+* Redux.js
+* Aysnc.js
+* Cheerio.js
+* React-Router.js
+* Babel
+* Mocha-Chai
+* Webpack
+* Bootstrap
 
-* What HTML version has the document?
-* What is the page title?
-* How many headings of what level are in the document?
-* How many internal and external links are in the document? Are there any inaccessible links and how many?
-* Did the page contain a login-form?
+## How to setup?
 
-In case the URL given by the user is not reachable an error message should appear below the input form. The message should contain the HTTP status-code and some useful error description.
+First of all clone or fork this repository. After you successfully clone it then you are ready to setup your environment.(If you have downloaded pack no need to clone.)
 
-Please write a node application handling all the wanted features. HINT: for document analysis consider using a library such as cheerio.js and for the server framework you could use express.js! If you are more familiar with other frameworks/libraries please feel free to use them.
+### Setup your production ready environment:
+* Run `npm install` to install all node dependencies.
+* Run `npm run build` in a terminal. This will create a public folder at the root with all production resources.
+* Run `npm run server:production` for starting the server.
+* **You are done.** You can go `http://localhost:3030` and check if everything is up and running.
 
-For the frontend part you can use all the available libraries and frameworks available on the internet.
+### Setup your development environment:
+* Run `npm install` to install all node dependencies.
+* Run `npm run client:development` in a terminal. This will start the webpack-dev-server for making the development easy. Webpack-dev-server will proxy all requests to your backend server.
+* Run `npm run server:development` for starting the your server backend.
+* **You are done.** You can go `http://localhost:3000` and check if everything is up and running.
 
-As a hint: CSS and Javascript for the frontend can be optimized automatically (Grunt.js) 
+## How to test?
+* Once you run one of your server developer or production with `npm run server:development`. You can now run the test.
+* Run `npm run test`.
+* You will seee the results in that terminal session. Don't bother to run your test script again and again. If you get an error realted timeout please change the timeout from packeage.json. Sample test result is can be seen below:
 
-Please provide the result as a npm package with this content:
+```
+    Website Analyser Test Suit
+    Test without view input.
+      ✓ should return 200OK (9996ms)
+      ✓ should have links. (10368ms)
+      ✓ should have version. (11456ms)
+      ✓ should have title. (14238ms)
+      ✓ should have headings. (12786ms)
+      ✓ should have login form. (16846ms)
 
-1. The project with all source files
-2. A short text document that lists the main steps of building your solution as well as all assumptions/decisions you made in case of unclear requirements or missing information 
-Thank you for your cooperation!
+
+  6 passing (1m)
+```
+
+## How is cache analysis working?
+When you open the UI, or when you make a POST rest call to the endpoint `/analyse` with a json body like below:
+```
+{
+  "webpage": "https://www.immobilienscout24.de/"
+}
+```
+AnalyserController.js controller handles the analysis jobs. We are checking version, title and so on. The challangive check is for the active links check. In here we are using `async.js` beauties like `eachLimit` function. This function processes parallel jobs with a job concurrent limit. In our app it is 5 jobs per processing. In here we are making rest calls through the links. After all calls are done we are parsing the response and return it back to the user.
+
+## How is UI working?
+It is a simple and clean UI which is builded with React.JS and and several libraries. Just type the url to the input and click the `Analyse` button. After some time you will see the results below the search bar. 
+
+If you want to list your links and want to see each condition of each link, do not forget to click links title. It will expand a panel and shows the table.
+
+## What could it be better?
+Of course it could be better if we can make a deeper analysis with scanning several HTML markups. And also this link analyser part could be a seperate project and this web app and this link analyser could talk each other and make the thinks more scalable. We can prepare a docker container for the project for making the deployment much faster and better. 

@@ -10,7 +10,7 @@
     "server:development": "NODE_ENV=development nodemon ./src/server/Server.js --exec babel-node",
     "server:production": "NODE_ENV=production nodemon ./public/server/Server.js --exec babel-node --presets env,stage-2",
     "build": "NODE_ENV=production webpack -p --config webpack.config.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --require babel-polyfill --compilers js:babel-register --timeout 600000"
   },
   "repository": {
     "type": "git",
