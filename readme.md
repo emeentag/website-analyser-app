@@ -1,6 +1,7 @@
 # Website Analyser Code Challenge for Scout24
 
 This is an application for analysing the provided webpage according to criterias below:
+
 * Show HTML version of the page.
 * Show title of the page.
 * Check if there is a login form in the page or not.
