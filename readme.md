@@ -2,11 +2,11 @@
 
 This is an application for analysing the provided webpage according to criterias below:
 
-* Show HTML version of the page.
-* Show title of the page.
-* Check if there is a login form in the page or not.
-* Check for the headings and their counts in the page.
-* Find all the links including internals and the externals with their accessibilitie. Show how many they are and list them in a table.
+1. Show HTML version of the page.
+2. Show title of the page.
+3. Check if there is a login form in the page or not.
+4. Check for the headings and their counts in the page.
+5. Find all the links including internals and the externals with their accessibilitie. Show how many they are and list them in a table.
 
 ## Technology used:
 * ES6
