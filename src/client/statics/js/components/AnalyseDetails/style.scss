@@ -1,0 +1,68 @@
+.jumbotron {
+  background: #ffffff !important;
+  border-top: none;
+  border-radius: 0px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+
+  h1 {
+    margin-bottom: 30px;
+    font-weight: 700 !important;
+    font-size: 48px !important;
+  }
+
+  .analyse-item {
+    padding: 0;
+    line-height: 30px;
+    border-top: 1px solid #E1E1E1;
+
+    .glyphicon {
+      display: inline;
+      vertical-align: middle;
+      padding-right: 10px;
+    }
+
+    .lead {
+      color: #484848;
+      font-weight: 200;
+      line-height: 70px;
+      font-size: 24px;
+      margin: 0;
+      display: inline;
+      vertical-align: middle;
+    }
+  }
+
+  .link-panel {
+    padding: 0;
+
+    .panel-default {
+      border-color: #E1E1E1;
+      border-right-color: transparent;
+      border-left-color: transparent;
+      box-shadow: none;
+      border-radius: 0;
+    }
+
+    .panel-heading {
+      padding: 0;
+      border-bottom: 0px solid transparent;
+      border-top-right-radius: 0;
+      border-top-left-radius: 0;
+      background-color: #ffffff;
+
+      .panel-title {
+        color: #484848;
+        font-weight: 200;
+        line-height: 70px;
+        a {   
+          font-size: 24px;
+        }
+
+        i {
+          padding-right: 10px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+.table {
+  margin-bottom: 0;
+  font-size: 16px;
+
+  .external-link {
+    background-color: #dd8378;
+    color: #ffffff;
+    padding: 3px 6px;
+    border-radius: 3px;
+  }
+  
+  .internal-link {
+    background-color: #72e285;
+    color:#ffffff;
+    padding: 3px 6px;
+    border-radius: 3px;
+  }
+}

@@ -1,5 +1,4 @@
 import Path from 'path';
-import HBS from 'express-handlebars';
 
 import HomeController from '../controllers/HomeController';
 import AnalyserController from '../controllers/AnalyserController';
@@ -17,13 +16,8 @@ export default class Routes {
 
   // Templates rendering.
   loadTemplateResources() {
-    this.app.engine('hbs', HBS({
-      extname: 'hbs',
-      defaultLayout: 'layout',
-      layoutsDir: Path.resolve(__dirname, '../../', 'client', 'templates', 'layouts')
-    }));
-    this.app.set('views', Path.resolve(__dirname, '../../', 'client', 'templates'));
-    this.app.set('view engine', 'hbs');
+    this.app.set('view engine', 'ejs')
+    this.app.set('views', Path.resolve(__dirname, '../../', 'client', 'templates'))
   }
 
   // Static html, img and other files.

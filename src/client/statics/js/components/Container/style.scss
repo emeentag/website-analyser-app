@@ -1,0 +1,42 @@
+#app {
+  .page-container {
+    margin: 100px 60px 150px 60px;
+    padding: 15px;
+
+    .breadcrumb-wrapper {
+      display: block;
+      height: 50px;
+      background-color: #ffffff;
+      padding: 5px 15px;
+      border: 1px solid rgba(0, 0, 0, .07);
+      margin-bottom: 20px;
+
+      .page-title {
+        display: inline-block;
+      }
+
+      .breadcrumb {
+        display: inline-block;
+        background-color: transparent;
+        float: right;
+        margin: 10px 0;
+        padding: 0;
+        font-size: 12px;
+        line-height: 20px;
+
+        li {
+          i {
+            margin-right: 5px;
+          }
+        }
+      }
+    }
+
+    .current-page {
+
+      .section {
+        
+      }
+    }
+  }
+}

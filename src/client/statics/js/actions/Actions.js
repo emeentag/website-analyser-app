@@ -1,0 +1,6 @@
+export default class Actions {
+  static DO_ANALYSE = 'ANALYSE';
+  static ANALYSE_PENDING = 'ANALYSE_PENDING';
+  static ANALYSE_FULFILLED = 'ANALYSE_FULFILLED';
+  static ANALYSE_REJECTED = 'ANALYSE_REJECTED';
+}

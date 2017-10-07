@@ -1,4 +1,4 @@
-import Request from 'request-promise';
+import Request from 'request';
 import async from 'async';
 import Cheerio from 'cheerio';
 
@@ -16,7 +16,7 @@ export default class AnalyserController {
   /**
    * Make an async call for page body.
    * 
-   * @param {*String} webpage 
+   * @param {* String} webpage 
    */
   static getRawHTML(request, response, next, webpage) {
     async.parallel([
@@ -26,16 +26,16 @@ export default class AnalyserController {
           method: 'GET',
           timeout: ServerConfig.QUERY_TIMEOUT,
           resolveWithFullResponse: true
-        })
-          .then((res) => {
+        }, (err, res, body) => {
+          if (!err && res.statusCode == 200) {
             nextCall(null, res);
-          })
-          .catch((err) => {
+          } else {
             nextCall(err, null);
-          });
+          }
+        });
       }
     ], (err, results) => {
-      if (err) {
+      if (err || !results[0]) {
         console.error("There is an error occured!");
         console.error(err);
         response.status(500).send(err);
