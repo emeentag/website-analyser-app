@@ -63,6 +63,6 @@ export default class AnalyserController {
     // Check for the accessible links and return server response.
     // This function contains async functions so this is the reason why we are
     // passing server response as a parameter here. We should response all async functions are done.
-    WebPageAnalyser.getLinks(html, cheerio, WebPageInfo, response, serverResponse);
+    WebPageAnalyser.getLinks(html, cheerio, { ...WebPageInfo, links:[] }, response, serverResponse);
   }
 }

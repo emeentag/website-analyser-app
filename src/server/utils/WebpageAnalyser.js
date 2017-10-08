@@ -1,5 +1,7 @@
 import Request from 'request';
 import async from 'async';
+import urlParse from 'url-parse';
+
 import ServerConfig from '../config/ServerConfig';
 
 export default class WebPageAnalyser {
@@ -93,8 +95,11 @@ export default class WebPageAnalyser {
         } else {
           // Internal links
           // Create the internal link with the domain name. We need it for making requests.
+
+          var parser = urlParse(serverResponse.req.body.webpage, true);
+
           urls.push({
-            "address":serverResponse.req.body.webpage.substring(0, serverResponse.req.body.webpage.indexOf(response.req.path)) + href, 
+            "address": parser.origin.concat((href.startsWith('/') === true ? href : (href.concat('/')))), 
             "type": "int"
           });
         }
@@ -128,7 +133,7 @@ export default class WebPageAnalyser {
         } else {
           // Link isn't accessible so update the object as false.
           responseModel.links.push({...url, "accessible": false});
-          console.log(`URL ${url.type}:${url.address} processed rather than 200OK.`);
+          console.log(`URL ${url.type}:${url.address} processed with another status.`);
           callback();
         }
       })

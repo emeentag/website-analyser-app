@@ -40,6 +40,7 @@ First of all clone or fork this repository. After you successfully clone it then
 
 ## How to test?
 * Once you run one of your server developer or production with `npm run server:development`. You can now run the test.
+* From UI testing please use `http(s)://` before domain.
 * Run `npm run test` for running BDD tests.
 * You will seee the results in that terminal session. Don't bother to run your test script again and again. If you get an error realted timeout please change the timeout from packeage.json. Sample test result is can be seen below:
 
