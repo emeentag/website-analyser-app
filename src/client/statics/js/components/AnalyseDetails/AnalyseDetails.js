@@ -33,8 +33,9 @@ const AnalysedLinkItem = (props) => {
           <h4 class="panel-title">
             <i class="glyphicon glyphicon-menu-right"></i>
             <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-1" aria-expanded="true" aria-controls="collapse-1">
-              <span>This webpage contains <strong>{linkCount.true} external</strong>, <strong>{linkCount.false} internal</strong> and
-              <strong> {accessibleLinkCount.false}</strong> <strong>inaccessible</strong> links.</span>
+              <span>This webpage contains <strong>{ linkCount.true | 0 } external</strong>, 
+              <strong>{ linkCount.false | 0 } internal</strong> and
+              <strong> { accessibleLinkCount.false | 0 }</strong> <strong>inaccessible</strong> links.</span>
             </a>
           </h4>
         </div>

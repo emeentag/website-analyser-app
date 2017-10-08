@@ -92,6 +92,16 @@ export default class WebPageAnalyser {
             "address":href, 
             "type": "ext"
           });
+        } else if (href.startsWith('//')) {
+          
+          // Another external link.
+          var parser = urlParse(serverResponse.req.body.webpage, false);
+
+          urls.push({
+            "address": parser.protocol.concat(href), 
+            "type": "ext"
+          });
+
         } else {
           // Internal links
           // Create the internal link with the domain name. We need it for making requests.
