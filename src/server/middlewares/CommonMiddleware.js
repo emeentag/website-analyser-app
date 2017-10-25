@@ -16,9 +16,9 @@ export default class CommonMiddleware {
 
   checkHttpProtocol(req, res, next) {
     if (!req.body.webpage.startsWith('http://') && !req.body.webpage.startsWith('https://')) {
-      req.body.webpage = 'http://' + req.body.webpage;
+      req.body.webpage = `http://${req.body.webpage}`;
     }
-    
+
     next();
   }
 }

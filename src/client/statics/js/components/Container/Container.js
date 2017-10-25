@@ -15,7 +15,7 @@ export default class Container extends React.Component {
   }
 
   getPageName() {
-    var pageName = _.find(AppConfig.ROUTES, {path:this.props.location.pathname}).name;
+    let pageName = 'Serdar';
 
     return pageName;
   }
@@ -29,6 +29,10 @@ export default class Container extends React.Component {
   }
 
   render() {
+
+    console.log(this.getPageName())
+    console.log(pageName)
+
     return (
       <div class="row page-container">
         <div class="current-page">
