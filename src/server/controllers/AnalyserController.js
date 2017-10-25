@@ -19,6 +19,7 @@ export default class AnalyserController {
    * @param {* String} webpage 
    */
   static getRawHTML(request, response, next, webpage) {
+    console.log(webpage);
     async.parallel([
       (nextCall) => {
         Request({

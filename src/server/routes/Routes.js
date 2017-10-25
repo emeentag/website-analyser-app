@@ -31,7 +31,7 @@ export default class Routes {
     this.app.get('/', HomeController.getHome);
     
     // ::::POSTs::::
-    this.app.post('/analyse', AnalyserController.analyseWebPage);
+    this.app.post('/analyse', this.commonMiddleware.checkHttpProtocol, AnalyserController.analyseWebPage);
     // ::::PUTs::::
     // ::::DELETEs::::
   }
