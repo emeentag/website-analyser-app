@@ -17,12 +17,12 @@ export default class Routes {
   // Templates rendering.
   loadTemplateResources() {
     this.app.set('view engine', 'ejs')
-    this.app.set('views', Path.resolve(__dirname, '../', 'template'))
+    this.app.set('views', Path.resolve(__dirname, '../', 'resources', 'templates'))
   }
 
   // Static html, img and other files.
   loadStaticResources() {
-    this.app.use(this.express.static(Path.resolve(__dirname, '../', 'static')));
+    this.app.use(this.express.static(Path.resolve(__dirname, '../', 'resources', 'static')));
   }
 
   createURLRoutes() {
