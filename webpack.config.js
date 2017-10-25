@@ -8,9 +8,9 @@ const webpack = require('webpack');
 const path = require('path');
 const bootstrapEntryPoints = require('./webpack.bootstrap.config');
 
-const publicPath = path.resolve(__dirname, 'src', 'server', 'static');
+const publicPath = path.resolve(__dirname, 'server', 'src', 'static');
 const nodeModulesPath = path.resolve(__dirname, 'node_modules');
-const appPath = path.resolve(__dirname, 'src', 'client', 'App.js');
+const appPath = path.resolve(__dirname, 'client', 'src', 'App.js');
 
 const isProd = process.env.NODE_ENV === 'production' ? true : false;
 
@@ -133,8 +133,8 @@ module.exports = {
       },
       hash: false,
       filename: 'for_index_template.html',
-      favicon: path.resolve(__dirname, 'src', 'client', 'images', 'favicon.ico'),
-      template: path.resolve(__dirname, 'src', 'server', 'template', 'index.ejs')
+      favicon: path.resolve(__dirname, 'client', 'src', 'images', 'favicon.ico'),
+      template: path.resolve(__dirname, 'server', 'src', 'template', 'index.ejs')
     }),
     new ExtractTextPlugin({
       filename: '/css/[name].css',
