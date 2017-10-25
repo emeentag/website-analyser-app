@@ -2,15 +2,15 @@
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+//const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack');
 const path = require('path');
 const bootstrapEntryPoints = require('./webpack.bootstrap.config');
 
-const publicPath = path.resolve(__dirname, 'public', 'client', 'statics');
+const publicPath = path.resolve(__dirname, 'src', 'server', 'static');
 const nodeModulesPath = path.resolve(__dirname, 'node_modules');
-const appPath = path.resolve(__dirname, 'src', 'client', 'statics', 'app.js');
+const appPath = path.resolve(__dirname, 'src', 'client', 'App.js');
 
 const isProd = process.env.NODE_ENV === 'production' ? true : false;
 
@@ -59,7 +59,7 @@ module.exports = {
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
         loaders: [
-          'file-loader?hash=sha512&digest=hex&name=' + (isProd ? '/' : '') + 'images/[name]_[hash:6].[ext]',
+          'file-loader?name=' + (isProd ? '/' : '') + 'images/[name].[ext]',
           // 'file-loader?hash=sha512&digest=hex&name=[hash].[ext]&outputPath=images/&publicPath=images/',
           {
             loader: 'image-webpack-loader',
@@ -131,10 +131,10 @@ module.exports = {
       minify: {
         collapseWhitespace: false,
       },
-      hash: true,
-      filename: 'index.html',
-      favicon: path.resolve(__dirname, 'src', 'client', 'statics', 'images', 'favicon.ico'),
-      template: path.resolve(__dirname, 'src', 'client', 'templates', 'index.ejs')
+      hash: false,
+      filename: 'for_index_template.html',
+      favicon: path.resolve(__dirname, 'src', 'client', 'images', 'favicon.ico'),
+      template: path.resolve(__dirname, 'src', 'server', 'template', 'index.ejs')
     }),
     new ExtractTextPlugin({
       filename: '/css/[name].css',
@@ -142,20 +142,7 @@ module.exports = {
       allChunks: true
     }),
 
-    new CopyWebpackPlugin([
-      {
-        context: 'src/client/templates',
-        from: '**/*',
-        to: '../templates'
-      },
-      {
-        context: 'src/server',
-        from: '**/*',
-        to: '../../server'
-      },
-    ]),
-
-    new CleanWebpackPlugin([path.resolve(__dirname, 'public')]),
+    new CleanWebpackPlugin(publicPath + '/*'),
 
     // enable HMR globally
     new webpack.HotModuleReplacementPlugin(),
