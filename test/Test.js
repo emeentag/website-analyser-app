@@ -12,7 +12,7 @@ describe('Website Analyser Test Suit', () => {
       Chai.request(ServerConfig.SERVER_URL)
         .post('/analyse')
         .send({
-          "webpage": "https://www.immobilienscout24.de/"
+          "webpage": "https://www.google.de/"
         })
         .end((err, res) => {
           Expect(err).to.be.null;
@@ -25,7 +25,7 @@ describe('Website Analyser Test Suit', () => {
       Chai.request(ServerConfig.SERVER_URL)
         .post('/analyse')
         .send({
-          "webpage": "https://www.immobilienscout24.de/"
+          "webpage": "https://www.google.de/"
         })
         .end((err, res) => {
           Expect(err).to.be.null;
@@ -41,7 +41,7 @@ describe('Website Analyser Test Suit', () => {
       Chai.request(ServerConfig.SERVER_URL)
         .post('/analyse')
         .send({
-          "webpage": "https://www.immobilienscout24.de/"
+          "webpage": "https://www.google.de/"
         })
         .end((err, res) => {
           Expect(err).to.be.null;
@@ -57,7 +57,7 @@ describe('Website Analyser Test Suit', () => {
       Chai.request(ServerConfig.SERVER_URL)
         .post('/analyse')
         .send({
-          "webpage": "https://www.immobilienscout24.de/"
+          "webpage": "https://www.google.de/"
         })
         .end((err, res) => {
           Expect(err).to.be.null;
@@ -73,7 +73,7 @@ describe('Website Analyser Test Suit', () => {
       Chai.request(ServerConfig.SERVER_URL)
         .post('/analyse')
         .send({
-          "webpage": "https://www.immobilienscout24.de/"
+          "webpage": "https://www.google.de/"
         })
         .end((err, res) => {
           Expect(err).to.be.null;
@@ -89,7 +89,7 @@ describe('Website Analyser Test Suit', () => {
       Chai.request(ServerConfig.SERVER_URL)
         .post('/analyse')
         .send({
-          "webpage": "https://www.immobilienscout24.de/"
+          "webpage": "https://www.google.de/"
         })
         .end((err, res) => {
           Expect(err).to.be.null;
