@@ -58,14 +58,14 @@ First of all clone or fork this repository. After you successfully clone it then
   6 passing (1m)
 ```
 
-## How is cache analysis working?
+## How is analysis working?
 When you open the UI, or when you make a POST rest call to the endpoint `/analyse` with a json body like below:
 ```
 {
   "webpage": "https://www.google.de/"
 }
 ```
-AnalyserController.js controller handles the analysis jobs. We are checking version, title and so on. The challangive check is for the active links check. In here we are using `async.js` beauties like `eachLimit` function. This function processes parallel jobs with a job concurrent limit. In our app it is 5 jobs per processing. In here we are making rest calls through the links. After all calls are done we are parsing the response and return it back to the user.
+AnalyserController.js controller handles the analysis jobs. We are checking version, title and so on. The challengive check is for the active links check. In here we are using `async.js` beauties like `eachLimit` function. This function processes parallel jobs with a job concurrent limit. In our app it is 5 jobs per processing. In here we are making rest calls through the links. After all calls are done we are parsing the response and return it back to the user.
 
 ## How is UI working?
 It is a simple and clean UI which is builded with React.JS and and several libraries. Just type the url to the input and click the `Analyse` button. After some time you will see the results below the search bar. 
